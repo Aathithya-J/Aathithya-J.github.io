@@ -13,13 +13,14 @@
       font-family: 'Roboto Mono', monospace;
       margin: 0;
       padding: 0;
-      background-color: #212539;
-      color: #ffffff;
+      background-color: #f7f7f7;
+      color: #333;
       text-align: center;
+      zoom: 110%
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -33,12 +34,14 @@
     header h1 {
       font-size: 36px;
       margin-bottom: 10px;
+      color: #333;
     }
 
     header h3 {
       font-size: 18px;
       font-weight: normal;
       margin-bottom: 0;
+      color: #666;
     }
 
     .social-icons {
@@ -48,7 +51,7 @@
     }
 
     .social-icons a {
-      color: #ffffff;
+      color: #333;
       font-size: 24px;
       margin-right: 20px;
     }
@@ -65,24 +68,27 @@
 
     .skills-achievements {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: center;
       margin-bottom: 40px;
       animation: slideInUp 1s ease;
     }
 
     .skills,
     .achievements {
-      flex-basis: 45%;
+      flex-basis: 100%;
       padding: 20px;
       border-radius: 5px;
-      background-color: #494949;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 10px;
     }
 
     .skills h2,
     .achievements h2 {
       font-size: 24px;
       margin-bottom: 10px;
-      color: #f3a536;
+      color: #333;
     }
 
     .skills-list,
@@ -100,6 +106,7 @@
       margin-bottom: 10px;
       display: flex;
       align-items: center;
+      color: #666;
     }
 
     .skills-list li i,
@@ -115,25 +122,27 @@
     }
 
     .project {
-      display: flex;
-      flex-direction: column;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
     }
 
     .project img {
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
+      border-radius: 5px 5px 0 0;
     }
 
     .project-info {
-      flex-grow: 1;
+      padding: 20px;
     }
 
     .project-info p {
       font-size: 18px;
       line-height: 1.5;
+      color: #333;
     }
 
     @keyframes slideInDown {
@@ -195,12 +204,84 @@
         margin-bottom: 20px;
       }
     }
+    /* Dropdown container */
+    /* Dropdown container */
+/* Default styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 20px;
+}
 
-    /* Scrollable text */
-    .achievements {
-      max-height: 200px;
-      overflow-y: scroll;
-    }
+.dropbtn {
+  background-color: #333;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 160px;
+  text-align: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.show {
+  display: block;
+}
+
+.dropbtn::after {
+  content: '\25BC';
+  font-size: 14px;
+  color: white;
+  margin-left: 5px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 800px) {
+  .dropdown {
+    display: block;
+    margin-bottom: 10px; /* Add space between stacked dropdowns */
+  }
+
+  .dropbtn {
+    width: 100%;
+    margin-bottom: 5px; /* Add space between stacked dropdown buttons */
+  }
+
+ 
+
+
+}
+
+
+
+
+
   </style>
 </head>
 
@@ -230,8 +311,6 @@
             <td><i class="fab fa-css3-alt"></i></td>
             <td><i class="fab fa-js"></i></td>
             <td><i class="fab fa-python"></i></td>
-          </tr>
-          <tr>
             <td><i class="fab fa-swift"></i></td>
             <td><i class="fab fa-react"></i></td>
             <td><i class="fab fa-node"></i></td>
@@ -241,15 +320,33 @@
       </div>
       <div class="achievements">
         <h2>Achievements:</h2>
-        <ul class="achievements-list">
-          <li>7 Research Projects</li>
-          <li>Internship @ Nullspace</li>
-          <li>SST Inventive Mind Award</li>
-          <li>Yet Another Achievement</li>
-          <li>One More Achievement</li>
-          <li>And Another Achievement</li>
-          <li>One Last Achievement</li>
-        </ul>
+        <div class="dropdown">
+          <button onclick="toggleDropdown('robotics')" class="dropbtn">Robotics</button>
+          <div class="dropdown-content" id="dropdown-robotics">
+            <a href="#">Project 1</a>
+            <a href="#">Project 2</a>
+            <a href="#">Project 3</a>
+          </div>
+        </div>
+        
+        <div class="dropdown">
+          <button onclick="toggleDropdown('science')" class="dropbtn">Science</button>
+          <div class="dropdown-content" id="dropdown-science">
+            <a href="#">Project 1</a>
+            <a href="#">Project 2</a>
+            <a href="#">Project 3</a>
+          </div>
+        </div>
+        
+        <div class="dropdown">
+          <button onclick="toggleDropdown('others')" class="dropbtn">Others</button>
+          <div class="dropdown-content" id="dropdown-others">
+            <a href="#">Project 1</a>
+            <a href="#">Project 2</a>
+            <a href="#">Project 3</a>
+          </div>
+        </div>
+                      
       </div>
     </div>
 
@@ -294,5 +391,30 @@
     </div>
   </div>
 </body>
+<script>
+  function toggleDropdown(category) {
+  var dropdown = document.getElementById("dropdown-" + category);
+  dropdown.classList.toggle("show");
+  var button = document.querySelector("[onclick='toggleDropdown(\"" + category + "\")']");
+  button.classList.toggle("rotate");
+}
 
+// Close the dropdowns if the user clicks outside of them
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+        var category = openDropdown.id.split("-")[1];
+        var button = document.querySelector("[onclick='toggleDropdown(\"" + category + "\")']");
+        button.classList.remove("rotate");
+      }
+    }
+  }
+}
+
+
+</script>
 </html>
