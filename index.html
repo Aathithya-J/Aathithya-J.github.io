@@ -224,8 +224,57 @@
       }
     }
 
+    .achievements-list ul {
+      margin: 10px 0;
+      padding: 0 20px;
+      list-style: none;
+      background: #f9f9f9;
+      border-left: 5px solid #666;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .achievements-list li>i {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .achievements-list hr {
+      margin: 10px 0;
+      border: none;
+      border-top: 1px solid #eaeaea;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    .custom-button {
+      background-color: #4285F4;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-button:hover {
+      background-color: #357ae8;
+    }
     /* Media query for smaller screens */
     @media only screen and (max-width: 800px) {
+      .custom-button {
+        background-color: #4285F4;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        font-size: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
       .skills-achievements {
         flex-direction: column;
       }
@@ -299,28 +348,30 @@
             </div>
           </div>
           <div class="project">
-            <img src="./sci.png" alt="Sci Research Projects Image" />
+            <img src="./sci.png" alt="Research Image" />
             <div class="project-info">
-              <p><strong>Sci Research Projects</strong></p>
-              <p>Various scientific research initiatives</p>
+              <p><strong>Scientific Research</strong></p>
+              <p>Various scientific research projects.</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="section achievements">
-        <h2>Achievements</h2>
+        <h2>🏆 Achievements</h2>
         <ul class="achievements-list">
-          <li><i></i> 
-            <ul>
-              <li>Courses:</li>
-              <li>NUS CS0</li>
-              <li>CS50 (In Progress)</li>
-            </ul>
-          </li>
+          <br>
+        <div class="button-container">
+          <a href="https://drive.google.com/drive/folders/1b9Y01E596jZtZG5CJWG-nUWqFNyOoPWl?usp=sharing"
+            class="custom-button">Click here for Full List & Certificates</a>
+        </div>
+        <br>
           <li><i></i>
             <ul>
               <hr>
               <li>Tech:</li>
+              <li>NUS CS0</li>
+              <li>CS50 (In Progress)</li>
               <li>First Lego League, 2024, 3rd in Robot Run & 3rd in Robot Championship</li>
               <li>Perse Coding Final Round, 2024, Merit</li>
               <li>Perse Coding Team Round 1, 2024, Distinction</li>
@@ -346,13 +397,10 @@
               <li>International Science and Invention Fair, 2023, Gold</li>
               <li>Indonesia International Applied Science Project Olympiad, 2023, Silver</li>
               <li>International Students Science Fair @ QASMT, Brisbane, Australia, 2023, Participant</li>
-              <li>ElementZ Science Fair, 2023, Participation</li>
               <li>SJPO Team & Individual, 2023, Participation</li>
               <li>International Online Science Project Competition, 2022, Bronze</li>
               <li>Opportunity X, 2022, Honourable Mention</li>
               <li>International C.B. Paul Science Quiz, 2022, Merit</li>
-              <li>Tan Kah Kee Young Inventors' Award, 2022, Participation</li>
-              <li>Young Inventors Journal, 2022, Participation</li>
             </ul>
           </li>
           <li><i></i>
@@ -365,33 +413,39 @@
               <li>SST Model United Nations, 2023, Deputy Vice Chair</li>
             </ul>
           </li>
+          <li><i></i>
+            <ul>
+              <hr>
+              <li>VIA:</li>
+              <li>30 Hours - Chua Chu Kang Primary School students competitive robotics</li>
+              <li>16 Hours - Girls in Stem, Refree</li>
+              <li>8 Hours - Sec 2 Learning Aliance with Mathayom Watnairong School</li>
+              <li>5 Hours - Spoke to S1 Parents on transition to secondaary school</li>
+              <li>8 Hours - Service at Engineering Good Project</li>
+            </ul>
+          </li>
+        </ul>
         </ul>
       </div>
-      <div class="section achievements">
-        
-      </div>
-      
-      
-    </div>
-    <div>
-      <p>Made with love by Aathithya❤️</p>
     </div>
   </div>
+
   <script>
     function toggleSection(section) {
-      const sections = document.querySelectorAll('.section');
-      const toggles = document.querySelectorAll('.toggle-option');
+      var sections = document.querySelectorAll('.section');
+      var options = document.querySelectorAll('.toggle-option');
 
-      sections.forEach(s => s.classList.remove('active'));
-      toggles.forEach(t => t.classList.remove('active'));
+      sections.forEach(function (el) {
+        el.classList.remove('active');
+      });
 
-      const activeSection = document.querySelector(`.${section}`);
-      const activeToggle = document.querySelector(`.toggle-option[data-section="${section}"]`);
+      options.forEach(function (el) {
+        el.classList.remove('active');
+      });
 
-      activeSection.classList.add('active');
-      activeToggle.classList.add('active');
+      document.querySelector('.' + section).classList.add('active');
+      document.querySelector('[data-section="' + section + '"]').classList.add('active');
     }
-
   </script>
 </body>
 
