@@ -428,33 +428,13 @@
         </ul>
       </div>
     </div>
-    <p>Total Visitors: <span id="visitor-count">Loading...</span></p>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Define your namespace and key for CountAPI
-    const namespace = 'aathithya-portfolio'; // Replace with a unique namespace
-    const key = 'visitor-count'; // Unique key for the counter
-
-    // Initialize the counter if it doesn't exist
-    fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=${key}&value=0`, {
-      method: 'GET',
-    }).catch(() => {
-      // Counter already exists, proceed with increment
+   import countapi from 'countapi-js';
+    countapi.visits().then((result) => {
+      console.log(result.value);
     });
-
-    // Increment and fetch the visitor count
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-      .then((response) => response.json())
-      .then((data) => {
-        document.getElementById('visitor-count').innerText = data.value;
-      })
-      .catch((error) => {
-        console.error('Error fetching visitor count:', error);
-        document.getElementById('visitor-count').innerText = 'Error';
-      });
-  });
     function toggleSection(section) {
       var sections = document.querySelectorAll('.section');
       var options = document.querySelectorAll('.toggle-option');
