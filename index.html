@@ -1,452 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <title>Aathithya Jegatheesan</title>
-  <style>
-    body {
-      font-family: 'Roboto Mono', monospace;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
-      text-align: center;
-      zoom: 110%
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aathithya Jegatheesan | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --accent-color: #333333;
+            --light-gray: #f2f2f2;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      animation: slideInDown 1s ease;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: #333;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    header h3 {
-      font-size: 18px;
-      font-weight: normal;
-      margin-bottom: 0;
-      color: #666;
-    }
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
 
-    .social-icons {
-      text-align: center;
-      margin-bottom: 20px;
-      animation: slideInLeft 1s ease;
-    }
+        h1, h2, h3 {
+            margin-bottom: 15px;
+        }
 
-    .social-icons a {
-      color: #333;
-      font-size: 36px;
-      margin-right: 20px;
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--light-gray);
+            padding: 20px 0;
+        }
 
-    .about-me {
-      margin-bottom: 40px;
-      animation: slideInRight 1s ease;
-    }
+        .hero-content {
+            max-width: 800px;
+        }
 
-    .about-me p {
-      font-size: 20px;
-      line-height: 1.5;
-    }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
 
-    .toggle-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
 
-    .toggle-option {
-      cursor: pointer;
-      padding: 10px 20px;
-      background-color: #ccc;
-      border-radius: 5px;
-      margin: 0 10px;
-    }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-    .toggle-option.active {
-      background-color: #000000;
-      color: #fff;
-    }
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
 
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
 
-    .skills-achievements {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      /* Added to handle smaller screens */
-      animation: slideInUp 1s ease;
-    }
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-    .section {
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: none;
-      align-items: center;
-    }
+        .project-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-    .section.active {
-      display: block;
-    }
+        .project-img {
+            height: 180px;
+            background-color: var(--medium-gray);
+        }
 
-    .skills h2,
-    .achievements h2 {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #333;
-      cursor: pointer;
-    }
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .skills-list,
-    .achievements-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      text-align: left;
-      font-size: xx-large;
-    }
+        .project-content {
+            padding: 15px;
+        }
 
-    .skills-list li,
-    .achievements-list li {
-      font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      color: #666;
-    }
+        .project-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
 
-    .skills-list li i,
-    .achievements-list li i {
-      margin-right: 10px;
-    }
+        /* Skills Section */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      grid-gap: 20px;
-      animation: slideInUp 1s ease;
-      justify-content: center;
-      /* Center the cards horizontally */
-    }
+        .skill-item {
+            background-color: var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-    .project {
-      background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      overflow: hidden;
-    }
+        .skill-item:hover {
+            background-color: var(--medium-gray);
+            transform: translateY(-2px);
+        }
 
-    .project img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 5px 5px 0 0;
-    }
+        /* Achievements Section */
+        .achievements-list {
+            list-style-type: none;
+        }
 
-    .project-info {
-      padding: 20px;
-    }
+        .achievement-item {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
 
-    .project-info p {
-      font-size: 18px;
-      line-height: 1.5;
-      color: #333;
-    }
+        .achievement-item::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
 
-    @keyframes slideInDown {
-      from {
-        transform: translateY(-100%);
-        opacity: 0;
-      }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+            .hero p {
+                font-size: 1rem;
+            }
 
-    @keyframes slideInUp {
-      from {
-        transform: translateY(100%);
-        opacity: 0;
-      }
+            section {
+                padding: 30px 0;
+            }
 
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    @keyframes slideInLeft {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
+            .container {
+                padding: 0 15px;
+            }
 
-    @keyframes slideInRight {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
+            .skill-item {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
 
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
+        @keyframes scramble {
+            0% {
+                content: "§¥#@*&%$!";
+                opacity: 0.7;
+            }
+            20% {
+                content: "A@th!thy@";
+                opacity: 0.8;
+            }
+            40% {
+                content: "Aat#!thy@";
+                opacity: 0.85;
+            }
+            60% {
+                content: "Aathith¥@";
+                opacity: 0.9;
+            }
+            80% {
+                content: "Aathithya";
+                opacity: 0.95;
+            }
+            100% {
+                content: "Aathithya Jegatheesan";
+                opacity: 1;
+            }
+        }
 
-    .achievements-list ul {
-      margin: 10px 0;
-      padding: 0 20px;
-      list-style: none;
-      background: #f9f9f9;
-      border-left: 5px solid #666;
-      border-radius: 5px;
-      width: 100%;
-    }
+        .decrypt-text {
+            display: inline-block;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
 
-    .achievements-list li>i {
-      color: #999;
-      font-size: 14px;
-    }
+        @keyframes scrambleReveal {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
 
-    .achievements-list hr {
-      margin: 10px 0;
-      border: none;
-      border-top: 1px solid #eaeaea;
-    }
-
-    .button-container {
-      text-align: center;
-    }
-
-    .custom-button {
-      background-color: #4285F4;
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 13px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .custom-button:hover {
-      background-color: #357ae8;
-    }
-    /* Media query for smaller screens */
-    @media only screen and (max-width: 800px) {
-      .custom-button {
-        background-color: #4285F4;
-        color: white;
-        padding: 15px 30px;
-        text-decoration: none;
-        font-size: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .skills-achievements {
-        flex-direction: column;
-      }
-
-      .skills,
-      .achievements {
-        width: 90%;
-        margin-bottom: 20px;
-      }
-    }
-  </style>
+        .decrypt-text.scrambling {
+            animation: scrambleReveal 0.05s ease-out forwards;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <header>
-      <h1>Aathithya Jegatheesan</h1>
-      <h3>Student of SST | Full-stack Developer</h3>
-    </header>
-
-    <div class="social-icons">
-      <a href="https://github.com/Aathithya-J" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/aathithya.j/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://sg.linkedin.com/in/aathithya-jegatheesan-a90982215" target="_blank"><i
-          class="fab fa-linkedin"></i></a>
-    </div>
-
-    <div class="about-me">
-      <p>👋 G'day! My name is Aathithya and I am currently studying in the School of Science and Technology Singapore.
-      </p>
-    </div>
-
-    <br>
-
-    <div class="toggle-container">
-      <div class="toggle-option active" data-section="skills" onclick="toggleSection('skills')">Projects</div>
-      <div class="toggle-option" data-section="achievements" onclick="toggleSection('achievements')">Achievements</div>
-    </div>
-
-
-    <div class="skills-achievements">
-      <div class="section skills active">
-        <h2>🛠️ Projects I've Worked On:</h2>
-        <div class="projects">
-          <div class="project">
-            <img src="./attendinc.png" alt="AttendINC Image" />
-            <div class="project-info">
-              <p><strong>AttendINC</strong></p>
-              <p>An efficient attendance system</p>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1><span class="decrypt-text">Aathithya Jegatheesan</span></h1>
+                    <p>Student of SST | Full-stack Developer</p>
+                    <p>👋 G'day! I'm currently studying at the School of Science and Technology Singapore, passionate about creating innovative solutions and pushing the boundaries of technology.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="project">
-            <img src="./aspa.png" alt="ASPA Project Image" />
-            <div class="project-info">
-              <p><strong>ASPA Project</strong></p>
-              <p>A platform for Doctors!</p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2>Projects I've Worked On</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="./attendinc.png" alt="AttendINC project">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">AttendINC</h3>
+                            <p>An efficient attendance system leveraging facial recognition technology.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="./aspa.png" alt="ASPA Project">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">ASPA Project</h3>
+                            <p>A comprehensive platform for Doctors to manage patient records and appointments.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="./fishml.png" alt="FishML project">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">FishML</h3>
+                            <p>Machine learning model for accurate fish species identification from images.</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="./mathx.png" alt="MathX app">
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">MathX</h3>
+                            <p>Interactive educational math app designed to make learning fun for students.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="project">
-            <img src="./fishml.png" alt="FishML Image" />
-            <div class="project-info">
-              <p><strong>FishML</strong></p>
-              <p>Using ML to detect fish illnesses to reducing fatality rates</p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2>Skills & Technologies</h2>
+                <div class="skills-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">HTML</span>
+                    <span class="skill-item">CSS</span>
+                    <span class="skill-item">JS</span>
+                    <span class="skill-item">Firebase</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">AI</span>
+                </div>
             </div>
-          </div>
-          <div class="project">
-            <img src="./mathx.png" alt="MathX Image" />
-            <div class="project-info">
-              <p><strong>MathX</strong></p>
-              <p>Educational platform for students to enhance math skills</p>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <div class="container">
+            <h2>Achievements</h2>
+            <ul class="achievements-list">
+                <li class="achievement-item"></li>
+                <li class="achievement-item">
+                <h3>2024</h3>
+                <p>SCMUN, Honourable Mention</p>
+                <p>FLL, 3rd in Champions & Robot Run</p>
+                <p>SST Inventive Minds Award</p>
+                <p>HCI Sieberrsec CTF</p>
+                <p>AYCEP</p>
+                </li>
+                <li class="achievement-item">
+                <h3>2023</h3>
+                <p>Splash Awards, Stage B Finalist</p>
+                <p>National Youth Tech Championship, 10th Place</p>
+                <p>International Science and Invention Fair, Gold, IYSA SEMI GRAND AWARD Indonesia</p>
+                <p>International Applied Science Project Olympiad, Silver</p>
+                <p>Participated in the International Student Science Fair, Brisbane</p>
+                <p>Singapore Math Project Festival, Honourable Mention</p>
+                <p>NP YCEP CTF, 2nd place</p>
+                <p>Central CTF</p>
+                <p>Speaker @ GeekCampSG</p>
+                <p>Hack&Roll</p>
+                </li>
+                <li class="achievement-item">
+                <h3>2022</h3>
+                <p>Historical Investigation Scene, Silver</p>
+                <p>INTOC, Bronze</p>
+                <p>Australian Informatics Olympiad: Credit</p>
+                <p>Australian Mathematics Contest: Credit</p>
+                </li>
+                <li class="achievement-item">
+                <h3>2021</h3>
+                <p>SASMO, Bronze</p>
+                <p>3rd in RoboCup Autonomous Driving League (Line Tracing)</p>
+                <p>1st Place in Team in RoboCup in Tianjin, China (Line Tracing)</p>
+                <p>Australian Informatics Olympiad: Credit</p>
+                </li>
+            </ul>
             </div>
-          </div>
-          <div class="project">
-            <img src="./sci.png" alt="Research Image" />
-            <div class="project-info">
-              <p><strong>Scientific Research</strong></p>
-              <p>Various scientific research projects.</p>
-            </div>
-          </div>
+        </section></li>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aathithya Jegatheesan. All rights reserved.</p>
         </div>
-      </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElement = document.querySelector(".decrypt-text");
+            const originalText = textElement.textContent;
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+";
+            let currentText = Array(originalText.length).fill("*");
+            let revealedIndices = new Set();
+            let maxIterations = 12; // Reduced from 20
+            let iteration = 0;
+            let scrambleSpeed = 50; // Faster updates (was 100)
 
-      <div class="section achievements">
-        <h2>🏆 Achievements</h2>
-        <ul class="achievements-list">
-          <br>
-        <div class="button-container">
-          <a href="https://drive.google.com/drive/folders/1b9Y01E596jZtZG5CJWG-nUWqFNyOoPWl?usp=sharing"
-            class="custom-button">Click here for Full List & Certificates</a>
-        </div>
-        <br>
-          <li><i></i>
-            <ul>
-              <hr>
-              <li>Tech:</li>
-              <li>NUS CS0</li>
-              <li>CS50 (In Progress)</li>
-              <li>First Lego League, 2024, 3rd in Robot Run & 3rd in Robot Championship</li>
-              <li>Perse Coding Final Round, 2024, Merit</li>
-              <li>Perse Coding Team Round 1, 2024, Distinction</li>
-              <li>Hack'n'Flag, 2023, 2nd Place</li>
-              <li>Perse Coding Final Round, 2023, Higher Participation</li>
-              <li>Perse Coding Team Round 1, 2023, Credit</li>
-              <li>Australian Informatics Olympiad, 2023, Credit</li>
-              <li>National Olympiad of Informatics Qualifiers, 2023, Participation</li>
-              <li>Central CTF, 2023, 5th Place</li>
-              <li>IMDA National Youth Tech Championships, Quarter-finalists</li>
-              <li>WorldSkills ASEAN Vex Robotics Challenge, 2023, Participation</li>
-              <li>RoboCup Asia-Pacific Tianjin Autonomous Driving U19, 2021, Winner of Super Team</li>
-              <li>RoboCup Asia-Pacific Tianjin Autonomous Driving U19, 2021, 3rd in Education Award</li>
-            </ul>
-          </li>
-          <li><i></i>
-            <ul>
-              <hr>
-              <li>Science:</li>
-              <li>SSEF, 2023/24, Participation</li>
-              <li>International Space Challenge, 2024, Honourable Mention</li>
-              <li>Singapore Mathematics Project Festival, 2023, Honourable Mention</li>
-              <li>International Science and Invention Fair, 2023, Gold</li>
-              <li>Indonesia International Applied Science Project Olympiad, 2023, Silver</li>
-              <li>International Students Science Fair @ QASMT, Brisbane, Australia, 2023, Participant</li>
-              <li>SJPO Team & Individual, 2023, Participation</li>
-              <li>International Online Science Project Competition, 2022, Bronze</li>
-              <li>Opportunity X, 2022, Honourable Mention</li>
-              <li>International C.B. Paul Science Quiz, 2022, Merit</li>
-            </ul>
-          </li>
-          <li><i></i>
-            <ul>
-              <hr>
-              <li>MUN:</li>
-              <li>Singapore Chinese Girls Model United Nations, 2024, Honourable Mention</li>
-              <li>Preparatory Model United Nations, 2023, Participant</li>
-              <li>Raffles Model United Nations, 2023, Participant</li>
-              <li>SST Model United Nations, 2023, Deputy Vice Chair</li>
-            </ul>
-          </li>
-          <li><i></i>
-            <ul>
-              <hr>
-              <li>VIA:</li>
-              <li>30 Hours - Chua Chu Kang Primary School students competitive robotics</li>
-              <li>16 Hours - Girls in Stem, Refree</li>
-              <li>8 Hours - Sec 2 Learning Aliance with Mathayom Watnairong School</li>
-              <li>5 Hours - Spoke to S1 Parents on transition to secondaary school</li>
-              <li>8 Hours - Service at Engineering Good Project</li>
-            </ul>
-          </li>
-        </ul>
-        </ul>
-      </div>
-    </div>
-  </div>
+            function scrambleText() {
+                if (revealedIndices.size >= originalText.length) return;
 
-  <script>
-    function toggleSection(section) {
-      var sections = document.querySelectorAll('.section');
-      var options = document.querySelectorAll('.toggle-option');
+                let newText = currentText.map((char, i) => {
+                    if (revealedIndices.has(i)) return originalText[i];
+                    if (originalText[i] === " ") {
+                        revealedIndices.add(i);
+                        return " ";
+                    }
+                    return characters[Math.floor(Math.random() * characters.length)];
+                });
 
-      sections.forEach(function (el) {
-        el.classList.remove('active');
-      });
+                textElement.textContent = newText.join("");
+                textElement.classList.add("scrambling");
 
-      options.forEach(function (el) {
-        el.classList.remove('active');
-      });
+                // Reveal multiple characters per iteration for smoother effect
+                if (iteration % 2 === 0) {
+                    let charsToReveal = Math.ceil((originalText.length - revealedIndices.size) / 4);
+                    for (let i = 0; i < charsToReveal; i++) {
+                        let availableIndices = [...Array(originalText.length).keys()]
+                            .filter(idx => !revealedIndices.has(idx) && originalText[idx] !== " ");
+                        
+                        if (availableIndices.length === 0) break;
+                        
+                        let randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+                        revealedIndices.add(randomIndex);
+                        currentText[randomIndex] = originalText[randomIndex];
+                    }
+                }
 
-      document.querySelector('.' + section).classList.add('active');
-      document.querySelector('[data-section="' + section + '"]').classList.add('active');
-    }
-  </script>
+                iteration++;
+                if (iteration < maxIterations || revealedIndices.size < originalText.length) {
+                    setTimeout(scrambleText, scrambleSpeed);
+                } else {
+                    textElement.textContent = originalText;
+                    textElement.classList.remove("scrambling");
+                }
+            }
+
+            // Start animation on load with a shorter delay
+            setTimeout(() => {
+                iteration = 0;
+                revealedIndices.clear();
+                scrambleText();
+            }, 300);
+
+            // Add hover effect with debounce
+            let timeout;
+            textElement.addEventListener("mouseover", () => {
+                if (timeout) clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    if (!textElement.classList.contains("scrambling")) {
+                        iteration = 0;
+                        revealedIndices.clear();
+                        scrambleText();
+                    }
+                }, 200);
+            });
+        });
+    </script>
 </body>
-
 </html>
